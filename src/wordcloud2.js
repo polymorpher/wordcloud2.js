@@ -147,7 +147,7 @@ if (!window.clearImmediate) {
   // Based on http://jsfromhell.com/array/shuffle
   var shuffleArray = function shuffleArray(arr) {
     for (var j, x, i = arr.length; i;
-      j = Math.floor(Math.random() * i),
+      j = Math.floor(Math.seededRandom() * i),
       x = arr[--i], arr[i] = arr[j],
       arr[j] = x) {}
     return arr;
@@ -336,9 +336,9 @@ if (!window.clearImmediate) {
     var getTextColor;
     function random_hsl_color(min, max) {
       return 'hsl(' +
-        (Math.random() * 360).toFixed() + ',' +
-        (Math.random() * 30 + 70).toFixed() + '%,' +
-        (Math.random() * (max - min) + min).toFixed() + '%)';
+        (Math.seededRandom() * 360).toFixed() + ',' +
+        (Math.seededRandom() * 30 + 70).toFixed() + '%,' +
+        (Math.seededRandom() * (max - min) + min).toFixed() + '%)';
     }
     switch (settings.color) {
       case 'random-dark':
@@ -471,7 +471,7 @@ if (!window.clearImmediate) {
         return 0;
       }
 
-      if (Math.random() > settings.rotateRatio) {
+      if (Math.seededRandom() > settings.rotateRatio) {
         return 0;
       }
 
@@ -482,11 +482,11 @@ if (!window.clearImmediate) {
       if (rotationSteps > 0) {
         // Min rotation + zero or more steps * span of one step
         return minRotation + 
-          Math.floor(Math.random() * rotationSteps) *
+          Math.floor(Math.seededRandom() * rotationSteps) *
           rotationRange / (rotationSteps - 1);
       }
       else {
-        return minRotation + Math.random() * rotationRange;
+        return minRotation + Math.seededRandom() * rotationRange;
       }
     };
 
