@@ -237,7 +237,7 @@ if (!window.clearImmediate) {
     /* Convert weightFactor into a function */
     if (typeof settings.weightFactor !== 'function') {
       var factor = settings.weightFactor;
-      settings.weightFactor = function weightFactor(pt) {
+      settings.weightFactor = function weightFactor(w, pt) {
         return pt * factor; //in px
       };
     }
@@ -508,7 +508,7 @@ if (!window.clearImmediate) {
       // fontSize === 0 means weightFactor function wants the text skipped,
       // and size < minSize means we cannot draw the text.
       var debug = false;
-      var fontSize = settings.weightFactor(weight);
+      var fontSize = settings.weightFactor(word, weight);
       if (fontSize <= settings.minSize) {
         return false;
       }
